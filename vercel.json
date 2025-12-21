@@ -1,10 +1,7 @@
 {
     "version": 2,
     "routes": [
-    {
-        "src": "/feedback",
-        "dest": "/index.js"
-    },
+    
     {
         "src": "/(.*)",
         "dest": "/$1"

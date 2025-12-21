@@ -2,15 +2,15 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import pkg from 'pg'
-const filename=fileURLToPath(import.meta.url)
-const dirname=path.dirname(filename)
+const _filename_=fileURLToPath(import.meta.url)
+const _dirname_=path.dirname(_filename_)
 const app=express()
-app.use(express.static(dirname))
+app.use(express.static(_dirname_))
 const port=8080
 app.use(express.json())
 app.get('/',(req,res)=>
 {
-    res.sendFile(path.join(dirname,'index.html'))
+    res.sendFile(path.join(_dirname_,'index.html'))
 })
 const pool=new pkg.Pool({
     connectionString:'postgresql://neondb_owner:npg_sw58OFiXJGeC@ep-odd-truth-a5etezja-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'

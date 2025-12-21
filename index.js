@@ -10,7 +10,7 @@ const port=8080
 app.use(express.json())
 app.get('/',(req,res)=>
 {
-    res.sendFile(dirname,path.join(dirname,'index.html'))
+    res.sendFile(path.join(dirname,'index.html'))
 })
 const pool=new pkg.Pool({
     connectionString:'postgresql://neondb_owner:npg_sw58OFiXJGeC@ep-odd-truth-a5etezja-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'

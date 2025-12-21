@@ -12,6 +12,10 @@ app.get('/',(req,res)=>
 {
     res.sendFile(path.join(_dirname_,'index.html'))
 })
+app.get('/react.png',(req,res)=>
+    {
+        res.sendFile(path.join(_dirname_,'react.png'))
+    })
 const pool=new pkg.Pool({
     connectionString:'postgresql://neondb_owner:npg_sw58OFiXJGeC@ep-odd-truth-a5etezja-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'
 })

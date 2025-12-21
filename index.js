@@ -5,17 +5,8 @@ import pkg from 'pg'
 const _filename_=fileURLToPath(import.meta.url)
 const _dirname_=path.dirname(_filename_)
 const app=express()
-app.use(express.static(_dirname_))
 const port=8080
 app.use(express.json())
-app.get('/',(req,res)=>
-{
-    res.sendFile(path.join(_dirname_,'index.html'))
-})
-app.get('/react.png',(req,res)=>
-    {
-        res.sendFile(path.join(_dirname_,'react.png'))
-    })
 const pool=new pkg.Pool({
     connectionString:'postgresql://neondb_owner:npg_sw58OFiXJGeC@ep-odd-truth-a5etezja-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'
 })

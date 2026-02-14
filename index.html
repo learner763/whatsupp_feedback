@@ -30,6 +30,7 @@
         font-size: 16px;
         overflow: auto;
         scrollbar-width: none;  
+        z-index: 1;
     }
     .side_bar label{
         padding: 10px 20px;
@@ -44,7 +45,7 @@
         scrollbar-width: none;
     }
     .top_bar{
-        background-color: darkgreen;
+        background: linear-gradient(to right,darkgreen,lime);
         color: white;
         padding: 10px 20px;
         font-size: 20px;
@@ -57,13 +58,15 @@
         width: 100%;
     }
     .info span{
-        color: darkgreen;
+        color: white;
         font-size: 20px;
         font-weight: bold;
-        margin: 20px;
+        margin: 10px;
+        background: linear-gradient(to right, darkgreen, lime);
+        padding: 5px;
     }
     .info nav{
-        margin-left: 20px;
+        margin: 10px;
         font-weight: bold;
     }
     .info img{
@@ -75,6 +78,8 @@
     }
     ul{
         margin: 0;
+        list-style: auto;
+        margin-right: 10px;
     }
     .top_bar button{
         margin-left: 10px;
@@ -120,8 +125,8 @@
         font-family: 'Inter';
         border: none;
         color: white;
-        background-color: darkgreen;
-
+        background: linear-gradient(to right, darkgreen, lime);
+        width: 262px;
     }
     @media (max-width:600px)
     {
@@ -155,7 +160,7 @@
     </div>
     <div class="info">
         <div class="top_bar" id="app_title">
-            <button style="display: none;"><i class="fa-solid fa-bars"></i></button>
+            <button id="menu" style="display: none;"><i id="menu_icon" class="fa-solid fa-bars"></i></button>
             <label>Online Chatting App - WhatsUpp</label>
         </div>
         <span style="margin-top: 64px;" id="app_link">Application Link</span>
@@ -213,7 +218,7 @@
             </ul>
         </nav>
         <span id="chat_detail">SQL-NOSQL Combination</span>
-        <label style="margin-left: 20px;">Postgresql and Firebase are combined to produce this application.
+        <label style="margin: 10px;">Postgresql and Firebase are combined to produce this application.
             LogIn and profile information is stored in postgresql but messages/chats are stored in both.
             Messages in postgresql show who is sender/receiver,when was message delivered and 
             message text while messages in firebase (cloud firestore) along side these attributes 
@@ -284,15 +289,19 @@
                     {
                         if(getComputedStyle(side_icons[j]).color==='rgb(0, 100, 0)')
                         {
-                            side_icons[j].style.color='white'
-                            side_icons[j].style.backgroundColor='darkgreen'
+                            side_icons[i].style.background='linear-gradient(to right, darkgreen, lime)'
+                            side_icons[i].style.border='none'
                             break
                         }
                     }
-                    side_icons[i].style.color='darkgreen'
-                    side_icons[i].style.backgroundColor='lightgreen'
+                    side_icons[i].style.backgroundColor='darkgreen'
+                    side_icons[i].style.borderWidth='1px 0px'
+                    side_icons[i].style.border='white solid'
+
+
+
                 }
-                window.location.href='#'+`${['app_title','app_link','tech_stack','app_components','chat_detail','unique_features','nav_detail','account_status','database_security','provide_feedback'][i]}`
+                document.getElementById(`${['app_title','app_link','tech_stack','app_components','chat_detail','unique_features','nav_detail','account_status','database_security','provide_feedback'][i]}`).scrollIntoView({behavior:'smooth',block:'center'})
                 if(window.innerWidth<601)
                 {
                     document.getElementsByClassName('side_bar')[0].style.width='0'
@@ -318,8 +327,6 @@
             document.getElementsByClassName('side_bar')[0].style.position='static'
             document.getElementsByClassName('side_bar')[0].style.overflow='auto'
             document.getElementsByClassName('info')[0].style.overflow='auto'
-
-            
         })
 
         document.querySelectorAll('.top_bar button')[0].addEventListener('click',()=>
@@ -328,9 +335,20 @@
             document.getElementsByClassName('side_bar')[0].style.position='fixed'
             document.getElementsByClassName('side_bar')[0].style.overflow='hidden'
             document.getElementsByClassName('info')[0].style.overflow='hidden'
-
         })
         
+        document.addEventListener('click',(e)=>
+        {
+            if(e.target!==document.getElementById('menu') && e.target!==document.getElementById('menu_icon') && window.innerWidth<601)
+            {
+                document.getElementsByClassName('side_bar')[0].style.position='static'
+                document.getElementsByClassName('side_bar')[0].style.width='0'
+                document.getElementsByClassName('side_bar')[0].style.overflow='auto'
+                document.getElementsByClassName('info')[0].style.overflow='auto'
+        
+            }
+        })
+
         document.querySelectorAll('.feedback button')[0].addEventListener('click',()=>
         {
             if(name.value.length>0 && name.value.length<16 && email.value.length>0 && email.value.length<31 && feedback_message.value.length>0 && feedback_message.value.length<201)

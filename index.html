@@ -287,10 +287,9 @@
                 {
                     for(let j=1;j<side_icons.length;j++)
                     {
-                        if(getComputedStyle(side_icons[j]).border!=='none')
+                        if(i!==j)
                         {
                             side_icons[j].style.border='none'
-                            break
                         }
                     }
                     side_icons[i].style.borderWidth='1px 0px'

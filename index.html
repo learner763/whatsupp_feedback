@@ -158,6 +158,7 @@
         <label style="border: white solid;border-width:1px 0px;">Application Link</label>
         <label>Tech Stack</label>
         <label>App Components</label>
+        <label>Email Authentication</label>
         <label>SQL-NOSQL Combination</label>
         <label >Unique Features</label>
         <label >Navigation Notables</label>
@@ -227,6 +228,12 @@
                 <li>Shows list of people who have joined this platform,you can search and start chatting with them.</li>
             </ul>
         </nav>
+        <span id="email_authentication">Email Authentication</span>
+        <label style="margin: 10px;">On signing up you will be authenticating your email.When you are logged in,
+            you have token key and logged_in key set as true in your browser.When you hit log out button,logged_in
+            gets removed.Now if you sign in to the same account,you wont be authenticating your email because account 
+            you are logging in has same token as the one stored in your browser.But if you sign in to any other account,
+            you have to go through email verification.</label>
         <span id="chat_detail">SQL-NOSQL Combination</span>
         <label style="margin: 10px;">Postgresql and Firebase are combined to produce this application.
             LogIn and profile information is stored in postgresql but messages/chats are stored in both.
@@ -304,7 +311,7 @@
                     side_icons[i].style.border='white solid'
                     side_icons[i].style.borderWidth='1px 0px'
                 }
-                document.getElementById(`${['app_title','app_link','tech_stack','app_components','chat_detail','unique_features','nav_detail','account_status','database_security','provide_feedback'][i]}`).scrollIntoView({behavior:'smooth',block:'center'})
+                document.getElementById(`${['app_title','app_link','tech_stack','email_authentication','app_components','chat_detail','unique_features','nav_detail','account_status','database_security','provide_feedback'][i]}`).scrollIntoView({behavior:'smooth',block:'center'})
                 if(window.innerWidth<601)
                 {
                     document.getElementsByClassName('side_bar')[0].style.width='0'

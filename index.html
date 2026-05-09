@@ -183,13 +183,13 @@
         <nav>Login Page
             <ul>
                 <li>LogIn and SignUp features.</li>
-                <li> Account Password Recovery.</li>
+                <li>Forgot Password feature.</li>
             </ul>
         </nav>
         <nav style="margin-top: 10px;">Profile Page
             <ul>
-                <li>You can add your personal info.</li>
-                <li>Keep username and profile name different for security purposes.</li>
+                <li>You can add your name and about information.</li>
+                <li>This personal info will help people to identify you.</li>
             </ul>
         </nav>
         <nav style="margin-top: 10px;">Chat Section
@@ -200,6 +200,7 @@
                 <li><b>Blue Tick</b> and <b>SeenAt</b> features are implemented to tell you that receiver has read the message along with the time when it was read.</li>
                 <li>You <b>get notified</b> on application when you receive unread messages.</li>
                 <li>You can <b>Edit,Delete and Reply</b> to messages.</li>
+                <li>If you click on qouted message,you can spot that original message in chat.</li>
                 <li><b>Date and Time</b> show when did the conversations happended.</li>
                 <li>Edited messages would appear with <b>Edited</b> label.</li>
             </ul>
@@ -207,11 +208,12 @@
         <nav style="margin-top: 10px;">Settings Section
             <ul>
                 <li>You can change account password and background theme.</li>
+                <li>You can decide whether to hide or display your active status.</li>
             </ul>
         </nav>
         <nav style="margin-top: 10px;">Profile Section
             <ul>
-                <li>To update your personal info and account username.</li>
+                <li>To update your personal info.</li>
             </ul>
         </nav>
         <nav style="margin-top: 10px;">Add Account
@@ -247,10 +249,9 @@
         </ul>
         <span id="account_status">Account Status</span>
         <ul>
-            <li>You can view whether other person is online,typing a message to you and person's last active time.</li>
-            <li>If someone gets access to your account,change both username & password particularly username(because old username 
-                stored in that someone's browser would result in logging out from your account).</li>
-
+            <li>You can view whether other person is online,typing a message to you and person's last active time if they have it public.</li>
+            <li>If someone gets access to your account,change your password.This will generate a new token that will be saved in your browser's local storage and other person will get logged out of your account
+                due to having your old token.</li>
         </ul>
         <span id="database_security">Database Security</span>
         <ul>

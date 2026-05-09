@@ -22,7 +22,7 @@ app.post('/feedback',(req,res)=>
             return err?res.json({success:false}):result.rowCount===1?res.json({success:true}):res.json({success:false})
         })
     }
-    return res.json({success:false,email:false})
+    return res.json({success:false,email_fault:false})
 })
 app.listen(port,()=>
 {

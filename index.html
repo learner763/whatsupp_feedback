@@ -362,40 +362,38 @@
 
         document.querySelectorAll('.feedback button')[0].addEventListener('click',()=>
         {
-            if(name.value.length>0 && name.value.length<16 && email.value.length>0 && email.value.length<31 && feedback_message.value.length>0 && feedback_message.value.length<201)
+            if(name.value.length>0 && name.value.length<16 && feedback_message.value.length>0 && feedback_message.value.length<201)
             {
-                if(email.value.includes('@') && email.value.includes('.') && email.value.split('@')[0].length>0 && email.value.split('.')[0].length>0 && email.value.split('.')[1].length>0 && email.value.split('@')[1].length>0 )
+                fetch('/feedback',{
+                    method:'POST',
+                    headers:{'Content-Type':'application/json'},
+                    body:JSON.stringify({
+                        name:name.value,
+                        email:email.value,
+                        feedback_message:feedback_message.value
+                    })
+                })
+                .then(responce=>responce.json())
+                .then(data=>
                 {
-                    fetch('/feedback',{
-                        method:'POST',
-                        headers:{'Content-Type':'application/json'},
-                        body:JSON.stringify({
-                            name:name.value,
-                            email:email.value,
-                            feedback_message:feedback_message.value
-                        })
-                    })
-                    .then(responce=>responce.json())
-                    .then(data=>
+                    if(data.success)
                     {
-                        if(data.success)
+                        name.value=''
+                        email.value=''
+                        feedback_message.value=''
+                        alert('Feedback Sent Successfully')
+                    }
+                    else{
+                        if(data.email)
                         {
-                            name.value=''
-                            email.value=''
-                            feedback_message.value=''
-                            alert('Feedback Sent Successfully')
+                            alert('Invalid Email')
                         }
-                        else{
-                            alert('Slow Internet Connection')
-                        }
-                    })
-                }
-                else{
-                    alert('Correct Email Format: you@domain.tld')
-                }
+                        else{alert('Slow Internet Connection')}
+                    }
+                })    
             }
             else{
-                alert('Length Ranges:\nName: 1-15\nEmail: 1-30\nFeedback: 1-200')
+                alert('Length Ranges:\nName: 1-15\nFeedback: 1-200')
             }
         })
     </script>

@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import pkg from 'pg'
+import validator from 'validator'
 const _filename_=fileURLToPath(import.meta.url)
 const _dirname_=path.dirname(_filename_)
 const app=express()
@@ -14,10 +15,14 @@ pool.connect()
 app.post('/feedback',(req,res)=>
 {
     const {name,email,feedback_message}=req.body
-    pool.query('insert into public.whatsupp_feedback(name,email,feedback) values($1,$2,$3)',[name,email,feedback_message],(err,result)=>
+    if(validator.isEmail(email))
     {
-        return err?res.json({success:false}):result.rowCount===1?res.json({success:true}):res.json({success:false})
-    })
+        pool.query('insert into public.whatsupp_feedback(name,email,feedback) values($1,$2,$3)',[name,email,feedback_message],(err,result)=>
+        {
+            return err?res.json({success:false}):result.rowCount===1?res.json({success:true}):res.json({success:false})
+        })
+    }
+    return res.json({success:false,email:false})
 })
 app.listen(port,()=>
 {
